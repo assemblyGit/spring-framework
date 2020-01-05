@@ -82,7 +82,7 @@ abstract class ConfigurationClassUtils {
 			BeanDefinition beanDef, MetadataReaderFactory metadataReaderFactory) {
 
 		String className = beanDef.getBeanClassName();
-		if (className == null || beanDef.getFactoryMethodName() != null) {
+		if (className == null || beanDef.getFactoryMethodName() != null) {//如果是需要factory method的情况,例如bean method 创建的bean定义
 			return false;
 		}
 

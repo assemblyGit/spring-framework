@@ -578,13 +578,13 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// even when triggered by lifecycle interfaces like BeanFactoryAware.
 		boolean earlySingletonExposure = (mbd.isSingleton() && this.allowCircularReferences &&
 				isSingletonCurrentlyInCreation(beanName));
-		if (earlySingletonExposure) {
+		if (earlySingletonExposure) {//如果是正在创建的bean,暴露能够提早引用的对象
 			if (logger.isTraceEnabled()) {
 				logger.trace("Eagerly caching bean '" + beanName +
 						"' to allow for resolving potential circular references");
 			}
-			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
-		}
+			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));//涉及到循环引用,geiSingle的时候会调用改ObjectFactory的 getObject()方法
+		}//,而且属性填充在postprocessafterinit 之前,所以该方法会先被调用
 
 		// Initialize the bean instance.
 		Object exposedObject = bean;

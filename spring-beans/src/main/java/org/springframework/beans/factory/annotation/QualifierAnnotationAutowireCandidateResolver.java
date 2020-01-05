@@ -172,7 +172,7 @@ public class QualifierAnnotationAutowireCandidateResolver extends GenericTypeAwa
 			Class<? extends Annotation> type = annotation.annotationType();
 			boolean checkMeta = true;
 			boolean fallbackToMeta = false;
-			if (isQualifier(type)) {
+			if (isQualifier(type)) {//判断是否是Qualifier注解
 				if (!checkQualifier(bdHolder, annotation, typeConverter)) {
 					fallbackToMeta = true;
 				}
@@ -182,7 +182,7 @@ public class QualifierAnnotationAutowireCandidateResolver extends GenericTypeAwa
 			}
 			if (checkMeta) {
 				boolean foundMeta = false;
-				for (Annotation metaAnn : type.getAnnotations()) {
+				for (Annotation metaAnn : type.getAnnotations()) {//注解的一级元注解
 					Class<? extends Annotation> metaType = metaAnn.annotationType();
 					if (isQualifier(metaType)) {
 						foundMeta = true;
@@ -223,7 +223,7 @@ public class QualifierAnnotationAutowireCandidateResolver extends GenericTypeAwa
 		Class<? extends Annotation> type = annotation.annotationType();
 		RootBeanDefinition bd = (RootBeanDefinition) bdHolder.getBeanDefinition();
 
-		AutowireCandidateQualifier qualifier = bd.getQualifier(type.getName());
+		AutowireCandidateQualifier qualifier = bd.getQualifier(type.getName());//获取给定AutowireCandidateQualifier
 		if (qualifier == null) {
 			qualifier = bd.getQualifier(ClassUtils.getShortName(type));
 		}
@@ -347,7 +347,7 @@ public class QualifierAnnotationAutowireCandidateResolver extends GenericTypeAwa
 	@Override
 	@Nullable
 	public Object getSuggestedValue(DependencyDescriptor descriptor) {
-		Object value = findValue(descriptor.getAnnotations());
+		Object value = findValue(descriptor.getAnnotations());//获取给定值
 		if (value == null) {
 			MethodParameter methodParam = descriptor.getMethodParameter();
 			if (methodParam != null) {

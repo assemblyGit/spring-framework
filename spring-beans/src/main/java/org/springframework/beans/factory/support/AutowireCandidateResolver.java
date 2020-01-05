@@ -30,7 +30,7 @@ import org.springframework.lang.Nullable;
  */
 public interface AutowireCandidateResolver {
 
-	/**
+	/**   <p>判断给定bean定义满足the given dependency的autowire 候选者</p>
 	 * Determine whether the given bean definition qualifies as an
 	 * autowire candidate for the given dependency.
 	 * <p>The default implementation checks

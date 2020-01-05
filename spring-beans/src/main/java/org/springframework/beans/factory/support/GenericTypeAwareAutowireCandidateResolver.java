@@ -66,7 +66,7 @@ public class GenericTypeAwareAutowireCandidateResolver extends SimpleAutowireCan
 			// If explicitly false, do not proceed with any other checks...
 			return false;
 		}
-		return checkGenericTypeMatch(bdHolder, descriptor);
+		return checkGenericTypeMatch(bdHolder, descriptor);//检查泛型是否匹配
 	}
 
 	/**

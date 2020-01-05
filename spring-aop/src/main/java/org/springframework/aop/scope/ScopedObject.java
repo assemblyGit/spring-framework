@@ -18,7 +18,7 @@ package org.springframework.aop.scope;
 
 import org.springframework.aop.RawTargetAccess;
 
-/**
+/**     <P>scoped object 被织入的接口</P>
  * An AOP introduction interface for scoped objects.
  *
  * <p>Objects created from the {@link ScopedProxyFactoryBean} can be cast

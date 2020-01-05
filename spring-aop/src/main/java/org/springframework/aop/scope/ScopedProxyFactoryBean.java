@@ -56,7 +56,7 @@ public class ScopedProxyFactoryBean extends ProxyConfig
 		implements FactoryBean<Object>, BeanFactoryAware, AopInfrastructureBean {
 
 	/** The TargetSource that manages scoping. */
-	private final SimpleBeanTargetSource scopedTargetSource = new SimpleBeanTargetSource();
+	private final SimpleBeanTargetSource scopedTargetSource = new SimpleBeanTargetSource();//管理scope的
 
 	/** The name of the target bean. */
 	@Nullable
@@ -106,7 +106,7 @@ public class ScopedProxyFactoryBean extends ProxyConfig
 			pf.setInterfaces(ClassUtils.getAllInterfacesForClass(beanType, cbf.getBeanClassLoader()));
 		}
 
-		// Add an introduction that implements only the methods on ScopedObject.
+		// Add an introduction that implements only the methods on ScopedObject.   ScopedObject实现的方法
 		ScopedObject scopedObject = new DefaultScopedObject(cbf, this.scopedTargetSource.getTargetBeanName());
 		pf.addAdvice(new DelegatingIntroductionInterceptor(scopedObject));
 

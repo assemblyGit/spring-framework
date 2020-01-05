@@ -21,7 +21,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.core.Ordered;
 import org.springframework.lang.Nullable;
 
-/**
+/**    <p>扩展标准ApplicationListener interface扩展变体</p>
  * Extended variant of the standard {@link ApplicationListener} interface,
  * exposing further metadata such as the supported event and source type.
  *
