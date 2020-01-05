@@ -71,11 +71,11 @@ public interface MethodMatcher {
 	 */
 	boolean isRuntime();
 
-	/**
+	/**    <p>只有在matches(Method method, Class<?> targetClass);返回true的情况下和isRuntime返回true的情况下,返回true</p>
 	 * Check whether there a runtime (dynamic) match for this method,
 	 * which must have matched statically.
 	 * <p>This method is invoked only if the 2-arg matches method returns
-	 * {@code true} for the given method and target class, and if the
+	 * {@code true} for the given method and target class, and if the    只有在
 	 * {@link #isRuntime()} method returns {@code true}. Invoked
 	 * immediately before potential running of the advice, after any
 	 * advice earlier in the advice chain has run.

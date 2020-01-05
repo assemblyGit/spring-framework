@@ -30,7 +30,7 @@ package org.springframework.aop;
 @FunctionalInterface
 public interface ClassFilter {
 
-	/**
+	/**   <p>pointcut是否该应用到给定target class</p>
 	 * Should the pointcut apply to the given interface or target class?
 	 * @param clazz the candidate target class
 	 * @return whether the advice should apply to the given target class

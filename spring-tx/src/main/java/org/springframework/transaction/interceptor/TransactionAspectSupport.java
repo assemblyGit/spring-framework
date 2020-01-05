@@ -39,7 +39,7 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.ConcurrentReferenceHashMap;
 import org.springframework.util.StringUtils;
 
-/**
+/**    <p>事务切面的基类,例如TransactionInterceptor或者 AspectJ aspect(spring-aspects工程,tx:annotation-driven mode=aspectj)</p>
  * Base class for transactional aspects, such as the {@link TransactionInterceptor}
  * or an AspectJ aspect.
  *

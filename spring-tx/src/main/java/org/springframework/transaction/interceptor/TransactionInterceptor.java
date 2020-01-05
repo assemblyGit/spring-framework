@@ -30,11 +30,11 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.transaction.PlatformTransactionManager;
 
-/**
+/**   <p>使用spring transaction 工具的声明式事务 aop Alliance MethodInterceptor</p>
  * AOP Alliance MethodInterceptor for declarative transaction
  * management using the common Spring transaction infrastructure
  * ({@link org.springframework.transaction.PlatformTransactionManager}).
- *
+ *    <p>从TransactionAspectSupport派生,TransactionAspectSupport和Spring 事务底层API交互,TransactionInterceptor简单调用父类方法</p>
  * <p>Derives from the {@link TransactionAspectSupport} class which
  * contains the integration with Spring's underlying transaction API.
  * TransactionInterceptor simply calls the relevant superclass methods
@@ -91,7 +91,7 @@ public class TransactionInterceptor extends TransactionAspectSupport implements 
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		// Work out the target class: may be {@code null}.
 		// The TransactionAttributeSource should be passed the target class
-		// as well as the method, which may be from an interface.
+		// as well as the method, which may be from an interface.  target object 的class
 		Class<?> targetClass = (invocation.getThis() != null ? AopUtils.getTargetClass(invocation.getThis()) : null);
 
 		// Adapt to TransactionAspectSupport's invokeWithinTransaction...

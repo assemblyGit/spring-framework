@@ -39,7 +39,7 @@ public interface TransactionAnnotationParser {
 
 	/**
 	 * Parse the transaction attribute for the given method or class,
-	 * based on an annotation type understood by this parser.
+	 * based on an annotation type understood by this parser.  解析给定class或者method上的事务注解属性
 	 * <p>This essentially parses a known transaction annotation into Spring's metadata
 	 * attribute class. Returns {@code null} if the method/class is not transactional.
 	 * @param element the annotated method or class

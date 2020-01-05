@@ -111,7 +111,7 @@ public abstract class AutoProxyUtils {
 	static void exposeTargetClass(
 			ConfigurableListableBeanFactory beanFactory, @Nullable String beanName, Class<?> targetClass) {
 
-		if (beanName != null && beanFactory.containsBeanDefinition(beanName)) {
+		if (beanName != null && beanFactory.containsBeanDefinition(beanName)) {//暴露target bean class
 			beanFactory.getMergedBeanDefinition(beanName).setAttribute(ORIGINAL_TARGET_CLASS_ATTRIBUTE, targetClass);
 		}
 	}

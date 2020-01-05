@@ -241,10 +241,10 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	}
 
 	@Override
-	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) {
+	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) {//在实例化之前
 		Object cacheKey = getCacheKey(beanClass, beanName);
 
-		if (!StringUtils.hasLength(beanName) || !this.targetSourcedBeans.contains(beanName)) {
+		if (!StringUtils.hasLength(beanName) || !this.targetSourcedBeans.contains(beanName)) {//已经代理过
 			if (this.advisedBeans.containsKey(cacheKey)) {
 				return null;
 			}
@@ -254,7 +254,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			}
 		}
 
-		// Create proxy here if we have a custom TargetSource.
+		// Create proxy here if we have a custom TargetSource.  如果存在自定义的targetsource,创建代理
 		// Suppresses unnecessary default instantiation of the target bean:
 		// The TargetSource will handle target instances in a custom fashion.
 		TargetSource targetSource = getCustomTargetSource(beanClass, beanName);
@@ -263,7 +263,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 				this.targetSourcedBeans.add(beanName);
 			}
 			Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(beanClass, beanName, targetSource);
-			Object proxy = createProxy(beanClass, beanName, specificInterceptors, targetSource);
+			Object proxy = createProxy(beanClass, beanName, specificInterceptors, targetSource);//创建缓存
 			this.proxyTypes.put(cacheKey, proxy.getClass());
 			return proxy;
 		}
@@ -295,7 +295,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) {
 		if (bean != null) {
 			Object cacheKey = getCacheKey(bean.getClass(), beanName);
-			if (this.earlyProxyReferences.remove(cacheKey) != bean) {
+			if (this.earlyProxyReferences.remove(cacheKey) != bean) {//
 				return wrapIfNecessary(bean, beanName, cacheKey);
 			}
 		}
@@ -332,7 +332,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	 * @return a proxy wrapping the bean, or the raw bean instance as-is
 	 */
 	protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) {
-		if (StringUtils.hasLength(beanName) && this.targetSourcedBeans.contains(beanName)) {
+		if (StringUtils.hasLength(beanName) && this.targetSourcedBeans.contains(beanName)) {//已经在postProcessBeforeInstantiation被代理
 			return bean;
 		}
 		if (Boolean.FALSE.equals(this.advisedBeans.get(cacheKey))) {

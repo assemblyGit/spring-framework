@@ -79,7 +79,7 @@ public abstract class AbstractFallbackTransactionAttributeSource implements Tran
 	private final Map<Object, TransactionAttribute> attributeCache = new ConcurrentHashMap<>(1024);
 
 
-	/**
+	/**   <p>先从缓存获取,缓存不存在调用computeTransactionAttribute</p>
 	 * Determine the transaction attribute for this method invocation.
 	 * <p>Defaults to the class's transaction attribute if no method attribute is found.
 	 * @param method the method for the current invocation (never {@code null})
@@ -140,7 +140,7 @@ public abstract class AbstractFallbackTransactionAttributeSource implements Tran
 		return new MethodClassKey(method, targetClass);
 	}
 
-	/**
+	/**  <p>先从Method上获取,method上不存在,从class获取</p>
 	 * Same signature as {@link #getTransactionAttribute}, but doesn't cache the result.
 	 * {@link #getTransactionAttribute} is effectively a caching decorator for this method.
 	 * <p>As of 4.1.8, this method can be overridden.

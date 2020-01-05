@@ -222,18 +222,18 @@ public abstract class AopUtils {
 	 */
 	public static boolean canApply(Pointcut pc, Class<?> targetClass, boolean hasIntroductions) {
 		Assert.notNull(pc, "Pointcut must not be null");
-		if (!pc.getClassFilter().matches(targetClass)) {
+		if (!pc.getClassFilter().matches(targetClass)) {//classFilter匹配
 			return false;
 		}
 
-		MethodMatcher methodMatcher = pc.getMethodMatcher();
+		MethodMatcher methodMatcher = pc.getMethodMatcher();//方法匹配
 		if (methodMatcher == MethodMatcher.TRUE) {
 			// No need to iterate the methods if we're matching any method anyway...
 			return true;
 		}
 
 		IntroductionAwareMethodMatcher introductionAwareMethodMatcher = null;
-		if (methodMatcher instanceof IntroductionAwareMethodMatcher) {
+		if (methodMatcher instanceof IntroductionAwareMethodMatcher) {//对织入感知
 			introductionAwareMethodMatcher = (IntroductionAwareMethodMatcher) methodMatcher;
 		}
 
@@ -248,7 +248,7 @@ public abstract class AopUtils {
 			for (Method method : methods) {
 				if (introductionAwareMethodMatcher != null ?
 						introductionAwareMethodMatcher.matches(method, targetClass, hasIntroductions) :
-						methodMatcher.matches(method, targetClass)) {
+						methodMatcher.matches(method, targetClass)) {//如果该pointcut对织入感知
 					return true;
 				}
 			}
@@ -276,14 +276,14 @@ public abstract class AopUtils {
 	 * @param advisor the advisor to check
 	 * @param targetClass class we're testing
 	 * @param hasIntroductions whether or not the advisor chain for this bean includes
-	 * any introductions
+	 * any introductions   是否包含织入的情况
 	 * @return whether the pointcut can apply on any method
 	 */
 	public static boolean canApply(Advisor advisor, Class<?> targetClass, boolean hasIntroductions) {
-		if (advisor instanceof IntroductionAdvisor) {
+		if (advisor instanceof IntroductionAdvisor) {//如果是织入advisor
 			return ((IntroductionAdvisor) advisor).getClassFilter().matches(targetClass);
 		}
-		else if (advisor instanceof PointcutAdvisor) {
+		else if (advisor instanceof PointcutAdvisor) {//切点Advisor
 			PointcutAdvisor pca = (PointcutAdvisor) advisor;
 			return canApply(pca.getPointcut(), targetClass, hasIntroductions);
 		}
@@ -293,7 +293,7 @@ public abstract class AopUtils {
 		}
 	}
 
-	/**
+	/**  <p>候选者candidateAdvisors list是否适用于给定class<p/>
 	 * Determine the sublist of the {@code candidateAdvisors} list
 	 * that is applicable to the given class.
 	 * @param candidateAdvisors the Advisors to evaluate
