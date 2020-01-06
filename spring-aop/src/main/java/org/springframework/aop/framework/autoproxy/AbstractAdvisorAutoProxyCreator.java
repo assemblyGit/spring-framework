@@ -35,7 +35,7 @@ import org.springframework.util.Assert;
  * return a custom list of Advisors applying to any object. Subclasses can
  * also override the inherited {@link #shouldSkip} method to exclude certain
  * objects from auto-proxying.
- *
+ *    <p>需要排序的Advisors 或者advice,需要实现org.springframework.core.Ordered接口,没有实现order的advisor被认为是无序的,会已未定义的顺序在advisor chain的末尾</p>
  * <p>Advisors or advices requiring ordering should implement the
  * {@link org.springframework.core.Ordered} interface. This class sorts
  * Advisors by Ordered order value. Advisors that don't implement the

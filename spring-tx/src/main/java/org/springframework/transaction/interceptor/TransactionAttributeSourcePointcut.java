@@ -25,7 +25,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.util.ObjectUtils;
 
-/**
+/**    <p>实现pointcut,对给定method.底层TransactionAttributeSource是否存在TransactionAttribute</p>
  * Inner class that implements a Pointcut that matches if the underlying
  * {@link TransactionAttributeSource} has an attribute for a given method.
  *

@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.lang.Nullable;
 
-/**
+/**    <p>封装 AspectJ before method.</p>
  * Spring AOP advice that wraps an AspectJ before method.
  *
  * @author Rod Johnson

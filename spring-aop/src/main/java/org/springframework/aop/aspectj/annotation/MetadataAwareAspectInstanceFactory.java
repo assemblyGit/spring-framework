@@ -19,7 +19,7 @@ package org.springframework.aop.aspectj.annotation;
 import org.springframework.aop.aspectj.AspectInstanceFactory;
 import org.springframework.lang.Nullable;
 
-/**
+/**   <p>返回AspectJ注解class的AspectMetadata</p>
  * Subinterface of {@link org.springframework.aop.aspectj.AspectInstanceFactory}
  * that returns {@link AspectMetadata} associated with AspectJ-annotated classes.
  *

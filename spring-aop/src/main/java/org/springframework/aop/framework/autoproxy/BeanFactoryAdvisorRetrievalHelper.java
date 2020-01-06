@@ -58,7 +58,7 @@ public class BeanFactoryAdvisorRetrievalHelper {
 	}
 
 
-	/**
+	/**   <p>从beanFactory获取所有Advisor类型的beanName,遍历每个beanName,调用isEligibleBean判断是否候选者,通过beanFactory获取advisor实例</p>
 	 * Find all eligible Advisor beans in the current bean factory,
 	 * ignoring FactoryBeans and excluding beans that are currently in creation.
 	 * @return the list of {@link org.springframework.aop.Advisor} beans

@@ -84,7 +84,7 @@ public interface AspectJAdvisorFactory {
 	Advisor getAdvisor(Method candidateAdviceMethod, MetadataAwareAspectInstanceFactory aspectInstanceFactory,
 			int declarationOrder, String aspectName);
 
-	/**
+	/**    <p>根据AspectJ advice方法构建Spring Aop Advice</p>
 	 * Build a Spring AOP Advice for the given AspectJ advice method.
 	 * @param candidateAdviceMethod the candidate advice method
 	 * @param expressionPointcut the AspectJ expression pointcut
